@@ -1,11 +1,13 @@
 import Connection.Connection
 import Find.Find
+import Find.Peluche
+
 
 fun main(args: Array<String>) {
- val connection = Connection("localhost", "27017", "neptuno", false)
+ val connection = Connection("localhost", "27017", "tienda_peluche", false)
      val db = connection.connect()
      println(db.name)
      var find = Find(db)
-    var documents = find.findAllAsString("cliente")
-    println(documents)
+    val listPeluche = find.findAllAsList("peluche", Peluche::class.java)
+    listPeluche.forEach { println(it.toString()) }
 }
