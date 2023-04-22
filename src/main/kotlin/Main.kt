@@ -8,6 +8,6 @@ fun main(args: Array<String>) {
      val db = connection.connect()
      println(db.name)
      var find = Find(db)
-    val listPeluche = find.findAllAsList("peluche", Peluche::class.java)
-    listPeluche.forEach { println(it.toString()) }
+    val listPeluche = find.findOneByIdAsDocument("peluche", "640b8d4e1381cc766f204b53")
+    println(listPeluche)
 }
